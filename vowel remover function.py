@@ -4,4 +4,4 @@ def vowel_remover(text):
         if l.lower() not in "aeiou":
             string += l
     return string
-print(vowel_remover("hello world!"))
+print(vowel_remover("hello world! Something Somewhere Somehow"))

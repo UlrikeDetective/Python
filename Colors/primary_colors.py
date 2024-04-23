@@ -1,170 +1,171 @@
 def diff(a, b):
     """
+    DONE: Translation to english
     TODO: fix this function!!
     """
     return a - b
 
 
 def simpleColor(r, g, b):
-    """simpleColor obtiene el nombre del color mas general al cual se acerca su formato R G B"""
+    """simpleColor obtains the most general color name to which its R G B format is closest"""
     r = int(r)
     g = int(g)
     b = int(b)
     bg = ir = 0  # TODO: Fix these variables
     try:
-        # ROJO --------------------------------------------------
+        # RED --------------------------------------------------
         if r > g and r > b:
 
-            rg = diff(r, g)  # distancia rojo a verde
-            rb = diff(r, b)  # distancia rojo a azul
+            rg = diff(r, g)  # distance red to green
+            rb = diff(r, b)  # distance red to blue
 
-            if g < 65 and b < 65 and rg > 60:  # azul y verde sin luz
-                return "ROJO"
+            if g < 65 and b < 65 and rg > 60:  # blue and green without light
+                return "RED"
 
-            gb = diff(g, b)  # distancia de verde a azul
+            gb = diff(g, b)  # distance from green to blue
 
-            if rg < rb:  # Verde mayor que Azul
-                if gb < rg:  # Verde mas cerca de Azul
+            if rg < rb:  # Green greater than Blue
+                if gb < rg:  # Green closer to Blue
                     if gb >= 30 and rg >= 80:
-                        return "NARANJA"
+                        return "ORANGE"
                     elif gb <= 20 and rg >= 80:
-                        return "ROJO"
+                        return "RED"
                     elif gb <= 20 and b > 175:
-                        return "CREMA"
+                        return "CREAM"
 
                     else:
                         return "CHOCOLATE"
-                else:  # Verde mas cerca de Rojo
+                else:  # Green closer to Red
                     if rg > 60:
-                        return "NARANJA*"
+                        return "ORANGE*"
                     elif r > 125:
-                        return "AMARILLO"
+                        return "YELLOW"
                     else:
-                        return "COCHOLATE"
-            elif rg > rb:  # Azul mayor que verde
-                if bg < rb:  # Verde mas cerca de Azul
+                        return "CHOCOLATE"
+            elif rg > rb:  # Blue greater than Green
+                if bg < rb:  # Green closer to Blue
                     if gb < 60:
                         if r > 150:
-                            return "ROJO 2"
+                            return "RED 2"
                         else:
-                            return "MARRON"
+                            return "BROWN"
                     elif g > 125:
-                        return "ROSADO"
+                        return "PINK"
                     else:
-                        return "ROJO 3"
-                else:  # Verde mas cerca de Rojo
+                        return "RED 3"
+                else:  # Green closer to Red
                     if rb < 60:
                         if r > 160:
-                            return "ROSADO*"
+                            return "PINK*"
                         else:
-                            return "ROJO"
+                            return "RED"
                     else:
-                        return "ROJO"
+                        return "RED"
 
-            else:  # g y b iguales
+            else:  # g and b equal
                 if rg > 20:
                     if r >= 100 and b < 60:
-                        return "ROJO"
+                        return "RED"
                     elif r >= 100:
-                        return "ROJO"
+                        return "RED"
                     else:
-                        return "MARRON"
+                        return "BROWN"
 
                 else:
-                    return "GRIS"
-        # VERDE ---------------------------------------------------
+                    return "GRAY"
+        # GREEN ---------------------------------------------------
         elif g > r and g > b:
-            gb = diff(g, b)  # distancia verde a azul
-            gr = diff(g, r)  # distancia verde a rojo
+            gb = diff(g, b)  # distance from green to blue
+            gr = diff(g, r)  # distance from green to red
 
-            if r < 65 and b < 65 and gb > 60:  # rojo y azul sin luz
-                return "VERDE"
+            if r < 65 and b < 65 and gb > 60:  # red and blue without light
+                return "GREEN"
 
-            rb = diff(r, b)  # distancia de rojo a azul
+            rb = diff(r, b)  # distance from red to blue
 
-            if r > b:  # ROJO > AZUL
-                if gr < gb:  # Verde con Rojo
+            if r > b:  # RED > BLUE
+                if gr < gb:  # Green with Red
 
                     if rb >= 150 and gr <= 20:
-                        return "AMARILLO"
+                        return "YELLOW"
                     else:
-                        return "VERDE"
-                else:  # ...Verde
-                    return "VERDE"
+                        return "GREEN"
+                else:  # ...Green
+                    return "GREEN"
 
-            elif r < b:  # AZUL > ROJO
-                if gb < gr:  # Verde con Azul
+            elif r < b:  # BLUE > RED
+                if gb < gr:  # Green with Blue
 
                     if gb <= 20:
-                        return "TURQUESA"
+                        return "TURQUOISE"
                     else:
-                        return "VERDE"
-                else:  # ...Verde
-                    return "VERDE"
+                        return "GREEN"
+                else:  # ...Green
+                    return "GREEN"
 
-            else:  # r y b iguales
+            else:  # r and b equal
                 if gb > 10:
-                    return "VERDE"
+                    return "GREEN"
                 else:
-                    return "GRIS"
+                    return "GRAY"
 
-        # AZUL ------------------------------------------------------
+        # BLUE ------------------------------------------------------
         elif b > r and b > g:
-            bg = diff(b, g)  # distancia azul a verde
-            br = diff(b, r)  # distancia azul a rojo
+            bg = diff(b, g)  # distance from blue to green
+            br = diff(b, r)  # distance from blue to red
 
-            if r < 65 and g < 65 and bg > 60:  # rojo y verde sin luz
-                return "AZUL"
+            if r < 65 and g < 65 and bg > 60:  # red and green without light
+                return "BLUE"
 
-            rg = diff(r, g)  # distancia de rojo a verde
+            rg = diff(r, g)  # distance from red to green
 
-            if g < r:  # ROJO  > VERDE
-                if bg < rg:  # Azul con Verde
+            if g < r:  # RED  > GREEN
+                if bg < rg:  # Blue with Green
                     if bg <= 20:
-                        return "TURQUESA"
+                        return "TURQUOISE"
                     else:
-                        return "CELESTE"
-                else:  # ...Azul
+                        return "SKY BLUE"
+                else:  # ...Blue
                     if rg <= 20:
                         if r >= 150:
-                            return "LILA"
+                            return "LILAC"
                         else:
-                            return "AZUL *************"
+                            return "BLUE *************"
                     else:
-                        return "AZUL"
+                        return "BLUE"
 
-            elif g > r:  #  VERDE > ROJO
-                if br < rg:  # Azul con rojo
+            elif g > r:  #  GREEN > RED
+                if br < rg:  # Blue with red
                     if br <= 20:
                         if r > 150 and g < 75:
-                            return "ROSADO FIUSHA"
+                            return "PINK FUCHSIA"
                         elif ir > 150:
-                            return "LILA"
+                            return "LILAC"
                         else:
-                            return "MORADO"
+                            return "PURPLE"
                     else:
-                        return "MORADO"
+                        return "PURPLE"
 
-                else:  # ...Azul
+                else:  # ...Blue
                     if rg <= 20:
                         if bg <= 20:
-                            return "GRIS"
+                            return "GRAY"
                         else:
-                            return "AZUL"
-            else:  # r y g iguales
+                            return "BLUE"
+            else:  # r and g equal
                 if bg > 20:
                     if r >= 100 and b < 60:
-                        return "ROJO"
+                        return "RED"
                     elif r >= 100:
-                        return "ROJO"
+                        return "RED"
                     else:
-                        return "MARRON"
+                        return "BROWN"
                 else:
-                    return "GRIS"
+                    return "GRAY"
 
-        # IGUALES---------------------------------------
+        # EQUALS---------------------------------------
         else:
-            return "GRIS"
+            return "GRAY"
 
     except:
 
@@ -172,7 +173,7 @@ def simpleColor(r, g, b):
 
 
 # ---------------------------------------------------------------------------------------------------
-# Puedes probar asi: python primary_colors.py 120,0,0   , esto resultara en un ROJO como respuesta
+# You can test like this: python primary_colors.py 120,0,0, this will result in a RED as response
 # --------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     import sys
